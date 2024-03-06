@@ -1,0 +1,25 @@
+{
+    "config": {
+        "name": "SkillboxSearchEngine",
+        "version": "0.1",
+        "max_responses": 4
+    },
+    "files": [
+        "C:/Skillbox/search_engine/resourses/file000.txt",
+        "C:/Skillbox/search_engine/resourses/file001.txt",
+        "C:/Skillbox/search_engine/resourses/file002.txt",
+        "C:/Skillbox/search_engine/resourses/file003.txt",
+        "C:/Skillbox/search_engine/resourses/file004.txt",
+        "C:/Skillbox/search_engine/resourses/file005.txt",
+        "C:/Skillbox/search_engine/resourses/file006.txt",
+        "C:/Skillbox/search_engine/resourses/file007.txt",
+        "C:/Skillbox/search_engine/resourses/file008.txt",
+        "C:/Skillbox/search_engine/resourses/file009.txt",
+        "C:/Skillbox/search_engine/resourses/file010.txt",
+        "C:/Skillbox/search_engine/resourses/file011.txt",
+        "C:/Skillbox/search_engine/resourses/file012.txt",
+        "C:/Skillbox/search_engine/resourses/file013.txt",
+        "C:/Skillbox/search_engine/resourses/file014.txt",
+        "C:/Skillbox/search_engine/resourses/file015.txt"
+    ]
+}
