@@ -1,8 +1,6 @@
 {
     "requests": [
-        "moscow is the capital of russia",
-        "is there any tickets to madrid or rome?",
-        "to the left, to the left",
-        "you can't count on thise serche engine"
+      "first request",
+      "second request"
     ]
 }

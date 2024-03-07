@@ -57,11 +57,12 @@ __Если `config.json` не будет содержать полей "config" 
     "config": {
         "name": "SearchEngine",
         "version": "0.1",
-        "max_responses": 5 
+        "max_responses": 4
     },
     "files": [
-        "path/to/text_file001.txt",
-        "path/to/text_file002.txt"
+        "path/to/file000.txt",
+        "path/to/file001.txt",
+        "path/to/file002.txt"
     ]
 }
 ```
@@ -99,7 +100,7 @@ __Если `config.json` не будет содержать полей "config" 
         "request001": {
             "relevance": [
                 {
-                    "doc_id": 7,
+                    "doc_id": 2,
                     "rank": 1.0
                 },
                 {
