@@ -8,6 +8,9 @@
  * @brief Класс для обработки поисковых запросов.
  */
 class SearchServer {
+private:
+  InvertedIndex _index;
+
 public:
   /**
    * @brief Конструктор класса.
@@ -16,16 +19,14 @@ public:
   SearchServer(InvertedIndex& idx) : _index(idx) {}
 
   /**
-   * @brief Метод обработки поисковых запросов.
-   * @param queries_input Поисковые запросы взятые из файла requests.json.
+   * @brief Метод для обработки поисковых запросов.
+   * @param queriesInput Вектор строк, представляющих поисковые запросы из файла
+   * requests.json.
    * @return Возвращает отсортированный список релевантных ответов для заданных
    * запросов.
    */
   std::vector<std::vector<RelativeIndex>> search(
-      const std::vector<std::string>& queries_input);
-
-private:
-  InvertedIndex _index;
+      const std::vector<std::string>& queriesInput);
 };
 
 #endif // SEARCHSERVER_H

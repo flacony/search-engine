@@ -3,10 +3,10 @@
 #include <unordered_set>
 
 std::vector<std::vector<RelativeIndex>> SearchServer::search(
-    const std::vector<std::string>& queries_input) {
+    const std::vector<std::string>& queriesInput) {
   std::vector<std::vector<RelativeIndex>> totalResults;
 
-  for (const auto& request : queries_input) {
+  for (const auto& request : queriesInput) {
     std::vector<RelativeIndex> requestResults;
 
     std::map<size_t, size_t> docIdCountMap;
@@ -36,10 +36,10 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
     }
 
     for (const auto& result : docIdCountMap) {
-      RelativeIndex ri;
-      ri.doc_id = result.first;
-      ri.rank = result.second / maxCount;
-      requestResults.push_back(ri);
+      RelativeIndex relativeIndex;
+      relativeIndex.doc_id = result.first;
+      relativeIndex.rank = result.second / maxCount;
+      requestResults.push_back(relativeIndex);
     }
 
     std::sort(requestResults.begin(), requestResults.end(),
