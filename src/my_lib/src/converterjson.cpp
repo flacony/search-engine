@@ -5,7 +5,7 @@
 
 using json = nlohmann::json;
 
-ConverterJSON::ConverterJSON(std::string path) {
+ConverterJSON::ConverterJSON(std::string& path) {
   _configPath = path + "/config.json";
   _requestsPath = path + "/requests.json";
   _answersPath = path + "/answers.json";

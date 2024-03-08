@@ -42,7 +42,7 @@ public:
    * @param path Путь к директории, содержащей файлы config.json и
    * requests.json. По умолчанию установлен на "./config/".
    */
-  ConverterJSON(std::string& path = "./config/");
+  ConverterJSON(std::string& path);
 
   /**
    * @brief Метод для получения содержимого текстовых документов из файла
