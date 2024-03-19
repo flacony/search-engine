@@ -9,7 +9,7 @@
 #include "structures.h"
 
 /**
- * @brief Класс для работы с обратным индексом.
+ * @brief Class for working with an inverted index.
  */
 class InvertedIndex {
 private:
@@ -17,37 +17,38 @@ private:
   std::map<std::string, std::vector<Entry>> _freqDictionary;
 
   /**
-   * @brief Метод для обновления инвертированного индекса с учетом содержимого
-   * документа.
-   * @param document Строка, содержащая текст документа.
-   * @param id Уникальный идентификатор документа.
-   * @note Метод использует статический мьютекс для обеспечения
-   * потокобезопасности при обновлении общего частотного словаря
-   * _freqDictionary.
+   * @brief Method for updating the inverted index considering the content of
+   * the document.
+   * @param document A string containing the text of the document.
+   * @param id Unique identifier of the document.
+   * @note The method uses a static mutex to ensure thread safety when updating
+   * the shared frequency dictionary _freqDictionary.
    */
   void _invertDocument(const std::string& document, size_t id);
 
 public:
   /**
-   * @brief Конструктор по умолчанию.
+   * @brief Default constructor.
    */
   InvertedIndex() = default;
 
   /**
-   * @brief Метод для обновления или заполнения базы документов.
-   * @param inputDocs Вектор строк, содержащих текст документов.
+   * @brief Method for updating or populating the document base.
+   * @param inputDocs A vector of strings containing the text of the documents.
    */
   void updateDocumentBase(const std::vector<std::string>& inputDocs);
 
   /**
-   * @brief Метод для определения количества вхождений слова в базе документов.
-   * @param word Слово, частоту вхождений которого необходимо определить.
-   * @return Возвращает подготовленный список с частотой слов.
+   * @brief Method for determining the frequency of occurrence of a word in the
+   * document base.
+   * @param word The word whose frequency of occurrence needs to be determined.
+   * @return Returns a prepared list with word frequency.
    */
   std::vector<Entry> getWordCount(const std::string& word);
 
-  /** @brief Регулярное выражение для распознования отдельных слов в тексте. В
-   * том числе считает за слова числа с точкой, слова или числа через дефис.
+  /** @brief Regular expression for recognizing individual words in the text.
+   * Also considers numbers with a dot, words or numbers separated by a hyphen
+   * as words.
    */
   std::regex pattern = std::regex(R"(\d+(\.\d+)?|\w([\w-]*\w)?)");
 };

@@ -4,7 +4,7 @@
 #include "structures.h"
 #include <vector>
 /**
- * @brief Класс для работы с JSON-файлами.
+ * @brief Class for working with JSON files.
  */
 class ConverterJSON {
 private:
@@ -13,82 +13,81 @@ private:
   std::string _answersPath;
 
   /**
-   * @brief Метод для записи содержимого из файла в nlohmann::json.
-   * @param path Строка, содержащая путь к файлу, из которого нужно считать
+   * @brief Method for reading content from a file into nlohmann::json.
+   * @param path A string containing the path to the file from which to read
    * JSON.
-   * @return nlohmann::json, представляющий содержимое файла.
+   * @return nlohmann::json representing the file's content.
    */
   nlohmann::json _getJsonFromFile(const std::string& path);
 
   /**
-   * @brief Метод для записи содержимого из nlohmann::json в файл.
-   * @param path Строка, содержащая путь к файлу, в который будет произведена
-   * запись.
-   * @param json Объект nlohmann::json, содержащий данные для записи в файл.
+   * @brief Method for writing content from nlohmann::json to a file.
+   * @param path A string containing the path to the file to which the content
+   * will be written.
+   * @param json An object of nlohmann::json containing data to be written to
+   * the file.
    */
   void _writeJsonToFile(const std::string& path, const nlohmann::json& json);
 
   /**
-   * @brief Метод для получения содержимого из файла.
-   * @param path Строка, содержащая путь к файлу, из которого будет произведено
-   * чтение.
-   * @return Строка, содержащая содержимое файла.
+   * @brief Method for getting content from a file.
+   * @param path A string containing the path to the file from which to read.
+   * @return A string containing the file's content.
    */
   std::string _getTextFromFile(const std::string& path);
 
 public:
   /**
-   * @brief Конструктор класса.
-   * @param path Путь к директории, содержащей файлы config.json и
-   * requests.json. По умолчанию установлен на "./config/".
+   * @brief Class constructor.
+   * @param path Path to the directory containing config.json and requests.json
+   * files. Default is set to "./config/".
    */
   ConverterJSON(std::string& path);
 
   /**
-   * @brief Метод для получения содержимого текстовых документов из файла
-   * config.json.
-   * @return Возвращает список путей к текстовым документам.
+   * @brief Method for getting content of text documents from config.json file.
+   * @return Returns a list of paths to text documents.
    */
   std::vector<std::string> getTextDocuments();
 
   /**
-   * @brief Метод для получения предельного количества ответов на один запрос из
-   * файла config.json.
-   * @return Возвращает предельное количество ответов.
+   * @brief Method for getting the maximum number of responses for a single
+   * request from config.json file.
+   * @return Returns the maximum number of responses.
    */
   int getResponsesLimit();
 
   /**
-   * @brief Метод для установки пути к файлу config.json.
-   * @param path Строка, содержащая абсолютный или относительный путь к файлу
-   * config.json.
+   * @brief Method for setting the path to the config.json file.
+   * @param path A string containing the absolute or relative path to the
+   * config.json file.
    */
   void setConfigPath(const std::string& path);
 
   /**
-   * @brief Метод для установки пути к файлу requests.json.
-   * @param path Строка, содержащая абсолютный или относительный путь к файлу
-   * requests.json.
+   * @brief Method for setting the path to the requests.json file.
+   * @param path A string containing the absolute or relative path to the
+   * requests.json file.
    */
   void setRequestsPath(const std::string& path);
 
   /**
-   * @brief Метод для установки пути к файлу answers.json.
-   * @param path Строка, содержащая абсолютный или относительный путь к файлу
-   * answers.json.
+   * @brief Method for setting the path to the answers.json file.
+   * @param path A string containing the absolute or relative path to the
+   * answers.json file.
    */
   void setAnswersPath(const std::string& path);
 
   /**
-   * @brief Метод для получения списка запросов из файла requests.json.
-   * @return Возвращает вектор строк, представляющих запросы.
+   * @brief Method for getting a list of requests from the requests.json file.
+   * @return Returns a vector of strings representing requests.
    */
   std::vector<std::string> getRequests();
 
   /**
-   * @brief Метод для записи результатов поисковых запросов в файл answers.json.
-   * @param answers Вектор векторов пар (document_id, score) - результаты
-   * поисковых запросов.
+   * @brief Method for writing search query results to the answers.json file.
+   * @param answers A vector of vectors of pairs (document_id, score)
+   * representing search query results.
    */
   void putAnswers(std::vector<std::vector<RelativeIndex>> answers);
 };

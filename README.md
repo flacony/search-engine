@@ -1,56 +1,58 @@
-# Проект "search_engine"
+# Project "search_engine"
 
-Проект **search_engine** представляет собой простой поисковый движок, написанный на C++.
+The **search_engine** project is a simple search engine written in C++.
 
-## Описание проекта
+## Project Description
 
-Программа предназначена для выполнения поиска в текстовых документах на основе конфигурационных файлов и запросов пользователя. В зависимости от переданных аргументов командной строки, программа определяет источники файлов и расположение результирующего файла.
+The program is designed to perform search in text documents based on configuration files and user queries. Depending on the command-line arguments passed, the program determines the sources of files and the location of the resulting file.
 
-## Запуск программы
+## Running the Program
 
-### Без аргументов
+### Without Arguments
 
-Если программа запускается без аргументов, она ищет в директории исполняемого файла папку "config", в которой должны находиться файлы `config.json` и `requests.json`. Затем программа создает и записывает результаты поиска в файл `answers.json` в той же директории.
+If the program is run without arguments, it looks for a "config" folder in the directory of the executable, where `config.json` and `requests.json` files are expected to be found. Then the program creates and writes the search results to the `answers.json` file in the same directory.
 
 ```bash
 ./search_engine
 ```
 
-### С одним аргументом
+### With One Argument
 
-При указании одного аргумента программа считает его путем к директории "config", где ожидаются файлы `config.json` и `requests.json`. Файл `answers.json` будет создан в указанной директории.
+When specifying one argument, the program considers it as the path to the "config" directory, where `config.json` and `requests.json` files are expected. The `answers.json` file will be created in the specified directory.
 
 ```bash
 ./search_engine /path/to/config
 ```
 
-### С двумя аргументами
+### With Two Arguments
 
-Если переданы два аргумента, программа рассматривает их как полные пути к файлам `config.json` и `requests.json`. Файл 'answers.json' будет создан в папке "config" в текущей директории исполняемого файла.
+If two arguments are passed, the program considers them as the full paths to the `config.json` and `requests.json` files. The `answers.json` file will be created in the "config" folder in the current directory of the executable file.
 
 ```bash
 ./search_engine /path/to/config.json /path/to/requests.json
 ```
 
-### С тремя аргументами
+### With Three Arguments
 
-При указании трех аргументов программа считает их путями к файлам `config.json`, `requests.json` и `answers.json` соответственно.
+When specifying three arguments, the program considers them as paths to the `config.json`, `requests.json`, and `answers.json` files respectively.
 
 ```bash
 ./search_engine /path/to/config.json /path/to/requests.json /path/to/answers.json
 ```
 
 
-__Если по указанным путям не найдены `config.json` или `requests.json`, программа завершается с ошибкой!__
-## Формат файлов
+__If `config.json` or `requests.json` are not found at the specified paths, the program exits with an error!__
+
+
+## File Formats
 
 ### config.json
 
-`config.json` - это конфигурационный файл, определяющий параметры поиска и пути к документам.
+`config.json` is a configuration file that defines search parameters and paths to documents.
 
-__Если `config.json` не будет содержать полей "config" и "files", программа завершится с ошибкой!__
+__If `config.json` does not contain the "config" and "files" fields, the program exits with an error!__
 
-Пример структуры файла:
+Example file structure:
 
 ```json
 {
@@ -68,15 +70,15 @@ __Если `config.json` не будет содержать полей "config" 
 ```
 
 
-- "max_responses" - максимальное количество ответов на каждый запрос.  
-- "files" - содержит пути к текстовым документам, по которым будет проводиться поиск.
+- "max_responses" - the maximum number of responses for each query.  
+- "files" - contains paths to text documents to be searched.
 
-Эти поля заполняются пользователем перед запуском программы.
+These fields are filled in by the user before running the program.
 
 
 ### requests.json
 
-`requests.json` - файл запросов, содержащий запросы пользователя для поиска. Пример структуры файла:
+`requests.json` is a file of queries containing user queries for search. Example file structure:
 
 ```json
 {
@@ -86,13 +88,13 @@ __Если `config.json` не будет содержать полей "config" 
     ]
 }
 ```
-Поле "requests" заполняется пользователем перед запуском программы.  
+The "requests" field is filled in by the user before running the program.  
 
-Шаблоны файлов `config.json` и `requests.json` можно найти в папке ["config"](./config).
+The templates of the files `config.json` and `requests.json` can be found in the folder ["config"](./config).
 
 ### answers.json
 
-`answers.json` - файл с результатами поиска. Пример структуры файла:
+`answers.json` is a file with search results. Example file structure:
 
 ```json
 {
@@ -117,24 +119,24 @@ __Если `config.json` не будет содержать полей "config" 
 }
 ```
 
-- "request001" - порядковый номер запроса, по которому сформирован ответ.  
-- "result" - индикатор наличия ответов на запрос. Принимает значение "true", если был найден хотя бы один документ.  
-- "doc_id" - порядковый номер документа (начиная с нуля) из представленного списка "files" в файле `config.json`.  
-- "rank" - относительная релевантность документа. 
+- "request001" - the sequential number of the query for which the response is generated.  
+- "result" - an indicator of whether there are responses to the query. It takes the value "true" if at least one document was found.  
+- "doc_id" - the sequential number of the document (starting from zero) from the presented list of "files" in the `config.json` file.  
+- "rank" - the relative relevance of the document. 
 
 
-## Требования
+## Requirements
 
-- Компилятор C++17 или выше
-- CMake версии 3.5 или выше
+- C++17 compiler or higher
+- CMake version 3.5 or higher
 
-## Зависимости
+## Dependencies
 
-Проект использует следующие библиотеки, которые устанавливаются автоматически при сборке с использованием CMake:
+The project uses the following libraries, which are automatically installed during the build using CMake:
 
-- [Google Test](https://github.com/google/googletest) - для модульного тестирования
-- [nlohmann/json](https://github.com/nlohmann/json) - для работы с JSON
+- [Google Test](https://github.com/google/googletest) - for unit testing
+- [nlohmann/json](https://github.com/nlohmann/json) - for JSON handling
 
-## Лицензия
+## License
 
-Проект распространяется под [MIT лицензией](LICENCE.txt).
+The project is distributed under the [MIT license](LICENCE.txt).

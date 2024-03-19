@@ -10,7 +10,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
     std::vector<RelativeIndex> requestResults;
 
     std::map<size_t, size_t> docIdCountMap;
-    float maxCount{0};
+    size_t maxCount{0};
 
     std::unordered_set<std::string> requestWords;
 
@@ -32,13 +32,13 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
     }
 
     for (const auto& result : docIdCountMap) {
-      maxCount = std::max(result.second, static_cast<size_t>(maxCount));
+      maxCount = std::max(result.second, maxCount);
     }
 
     for (const auto& result : docIdCountMap) {
       RelativeIndex relativeIndex;
       relativeIndex.doc_id = result.first;
-      relativeIndex.rank = result.second / maxCount;
+      relativeIndex.rank = static_cast<double>(result.second) / maxCount;
       requestResults.push_back(relativeIndex);
     }
 
