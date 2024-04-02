@@ -1,4 +1,5 @@
 #include "../src/my_lib/src/searchserver.cpp"
+#include "../src/my_lib/src/threadpool.cpp"
 #include <gtest/gtest.h>
 
 TEST(TestCaseSearchServer, TestSimple) {

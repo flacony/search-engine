@@ -9,6 +9,6 @@ add_executable(search_engine
     main.cpp
 )
 
-add_library(tools my_lib/src/converterjson.cpp my_lib/src/invertedindex.cpp my_lib/src/searchserver.cpp)
+add_library(tools my_lib/src/converterjson.cpp my_lib/src/invertedindex.cpp my_lib/src/searchserver.cpp my_lib/src/threadpool.cpp)
 
 target_link_libraries(search_engine PRIVATE nlohmann_json::nlohmann_json tools)

@@ -1,6 +1,7 @@
+#include <unordered_set>
+
 #include "searchserver.h"
 #include "regex"
-#include <unordered_set>
 
 std::vector<std::vector<RelativeIndex>> SearchServer::search(
     const std::vector<std::string>& queriesInput) {
@@ -46,5 +47,5 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
               [](RelativeIndex a, RelativeIndex b) { return a.rank > b.rank; });
     totalResults.push_back(requestResults);
   }
-  return std::move(totalResults);
+  return totalResults;
 }

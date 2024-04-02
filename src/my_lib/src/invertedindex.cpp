@@ -1,25 +1,22 @@
 #include "invertedindex.h"
-#include <mutex>
-#include <thread>
+#include "threadpool.h"
 
 void InvertedIndex::updateDocumentBase(
     const std::vector<std::string>& inputDocs) {
   _freqDictionary.clear();
   _docs = inputDocs;
 
-  std::vector<std::thread> threads;
+  std::queue<std::function<void()>> tasks;
   size_t id{0};
 
   for (const auto& document : inputDocs) {
-    threads.emplace_back(&InvertedIndex::_invertDocument, this, document, id);
+    tasks.emplace(
+        std::bind(&InvertedIndex::_invertDocument, this, document, id));
     id++;
   }
 
-  for (auto& thread : threads) {
-    if (thread.joinable()) {
-      thread.join();
-    }
-  }
+  ThreadPool pool;
+  pool.execute(tasks);
 }
 
 void InvertedIndex::_invertDocument(const std::string& document, size_t id) {

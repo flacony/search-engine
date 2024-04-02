@@ -1,8 +1,11 @@
 #ifndef CONVERTERJSON_H
 #define CONVERTERJSON_H
+
+#include <vector>
+
 #include "nlohmann/json.hpp"
 #include "structures.h"
-#include <vector>
+
 /**
  * @brief Class for working with JSON files.
  */
