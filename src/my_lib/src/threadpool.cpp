@@ -29,6 +29,8 @@ void ThreadPool::execute(std::queue<std::function<void()>>& tasks) {
   }
 
   for (auto& thread : _threads) {
-    thread.join();
+    if (thread.joinable()) {
+      thread.join();
+    }
   }
 }
