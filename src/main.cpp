@@ -1,8 +1,8 @@
+#include <iostream>
+
 #include "converterjson.h"
 #include "invertedindex.h"
 #include "searchserver.h"
-#include "structures.h"
-#include <iostream>
 
 int main(int argc, char* argv[]) {
   if (argc > 4) {
@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
     converterJson.setConfigPath(argv[1]);
     converterJson.setRequestsPath(argv[2]);
   }
+
   if (argc == 4) {
     converterJson.setAnswersPath(argv[3]);
   }
@@ -32,4 +33,6 @@ int main(int argc, char* argv[]) {
   SearchServer searchServer(invertedIndex);
   auto results = searchServer.search(converterJson.getRequests());
   converterJson.putAnswers(results);
+
+  return 0;
 }

@@ -1,7 +1,6 @@
 #include <unordered_set>
 
 #include "searchserver.h"
-#include "regex"
 
 std::vector<std::vector<RelativeIndex>> SearchServer::search(
     const std::vector<std::string>& queriesInput) {
