@@ -8,6 +8,7 @@ int main(int argc, char* argv[]) {
   if (argc > 4) {
     std::cerr << "Usage: Too many command-line arguments provided."
               << std::endl;
+
     return 1;
   }
 

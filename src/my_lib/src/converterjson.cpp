@@ -41,6 +41,7 @@ json ConverterJSON::_getJsonFromFile(const std::string& path) {
     } else {
       inputFile >> configJson;
     }
+
     return configJson;
   } catch (const std::exception& e) {
     std::cerr << "Exception while working with file: " << e.what();
@@ -64,6 +65,7 @@ std::string ConverterJSON::_getTextFromFile(const std::string& path) {
   } catch (const std::exception& e) {
     std::cerr << "Exception while working with file: " << e.what() << std::endl;
   }
+
   return text;
 }
 
@@ -124,8 +126,8 @@ void ConverterJSON::putAnswers(
   json answersJson;
 
   int responsesLimit = getResponsesLimit();
+  int requestCounter{1};
 
-  int requestCounter{0};
   for (const auto& answer : answersList) {
     json answerJson;
     answerJson["result"] = answer.empty() ? "false" : "true";
@@ -145,9 +147,8 @@ void ConverterJSON::putAnswers(
     }
 
     std::string name = "request";
-    name += (requestCounter + 1 < 10 ? "00"
-                                     : (requestCounter + 1 < 100 ? "0" : "")) +
-            std::to_string(requestCounter + 1);
+    name += (requestCounter < 10 ? "00" : (requestCounter < 100 ? "0" : "")) +
+            std::to_string(requestCounter);
 
     answersJson["answers"][name] = answerJson;
     _writeJsonToFile(_answersPath, answersJson);

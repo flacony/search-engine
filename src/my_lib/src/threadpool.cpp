@@ -3,6 +3,7 @@
 int ThreadPool::_getThreadsCount(int tasksCount) {
   int coresCount = std::thread::hardware_concurrency();
   coresCount = coresCount ? coresCount : 4;
+
   return std::min(coresCount, tasksCount);
 }
 

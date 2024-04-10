@@ -46,5 +46,6 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
               [](RelativeIndex a, RelativeIndex b) { return a.rank > b.rank; });
     totalResults.push_back(requestResults);
   }
+
   return totalResults;
 }
