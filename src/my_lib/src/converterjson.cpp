@@ -94,7 +94,7 @@ std::vector<std::string> ConverterJSON::getTextDocuments() {
     textDocuments.push_back(_getTextFromFile(path));
   }
 
-  return std::move(textDocuments);
+  return textDocuments;
 }
 
 int ConverterJSON::getResponsesLimit() {
@@ -151,7 +151,7 @@ void ConverterJSON::putAnswers(
             std::to_string(requestCounter);
 
     answersJson["answers"][name] = answerJson;
-    _writeJsonToFile(_answersPath, answersJson);
     ++requestCounter;
   }
+  _writeJsonToFile(_answersPath, answersJson);
 }

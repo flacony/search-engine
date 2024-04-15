@@ -6,7 +6,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
     const std::vector<std::string>& queriesInput) {
   std::vector<std::vector<RelativeIndex>> totalResults;
 
-  for (const auto& request : queriesInput) {
+  for (const auto& query : queriesInput) {
     std::vector<RelativeIndex> requestResults;
 
     std::map<size_t, size_t> docIdCountMap;
@@ -14,8 +14,7 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
 
     std::unordered_set<std::string> requestWords;
 
-    std::sregex_token_iterator iter(request.begin(), request.end(),
-                                    _index.pattern);
+    std::sregex_token_iterator iter(query.begin(), query.end(), _index.pattern);
     std::sregex_token_iterator rend;
 
     while (iter != rend) {
@@ -23,8 +22,8 @@ std::vector<std::vector<RelativeIndex>> SearchServer::search(
       ++iter;
     }
 
-    for (const auto& request : requestWords) {
-      std::vector<Entry> wordEntries = _index.getWordCount(request);
+    for (const auto& word : requestWords) {
+      std::vector<Entry> wordEntries = _index.getWordCount(word);
 
       for (const auto& entry : wordEntries) {
         docIdCountMap[entry.doc_id] += entry.count;
